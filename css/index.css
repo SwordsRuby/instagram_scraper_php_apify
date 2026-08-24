@@ -1,0 +1,691 @@
+/* ============================================================
+   ROOT VARIABLES - Только цвета с картинки (без фиолетового)
+   ============================================================ */
+:root {
+    /* Основные цвета (только с картинки) */
+    --primary: #1A73E8;
+    --primary-dark: #1557B0;
+    --primary-light: #E8F0FE;
+    --primary-gradient: linear-gradient(135deg, #1A73E8 0%, #1557B0 100%);
+    
+    /* Фоны */
+    --bg-main: #F5F5F5;
+    --bg-card: #FFFFFF;
+    --bg-card-hover: #FAFAFA;
+    --bg-input: #F0F0F0;
+    
+    /* Текст */
+    --text-primary: #1A1A1A;
+    --text-secondary: #5F6368;
+    --text-muted: #9AA0A6;
+    
+    /* Границы */
+    --border-color: #E0E0E0;
+    --border-color-light: #EEEEEE;
+    
+    /* Тени */
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --box-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+    
+    /* Остальное */
+    --border-radius: 12px;
+    --border-radius-lg: 20px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.dashboard-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-color-light);
+    padding: 0 40px;
+}
+
+.header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-actions .user-info {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.btn-clear {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-clear:hover {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+.dashboard-main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 20px 60px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero-section {
+    margin-bottom: 30px;
+    padding: 30px 0 10px;
+}
+
+.hero-section h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.hero-section p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ============================================================
+   NAVIGATION TABS
+   ============================================================ */
+.nav-tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 0 16px;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border-color-light);
+    margin-bottom: 24px;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-tab {
+    padding: 6px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-light);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.nav-tab:hover {
+    background: var(--bg-input);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.nav-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* ============================================================
+   ADD REEL SECTION
+   ============================================================ */
+.add-reel-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-lg);
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.add-reel-section:hover {
+    box-shadow: var(--box-shadow-hover);
+}
+
+.add-reel-section .section-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.add-reel-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-reel-section h2 .badge {
+    background: var(--primary);
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: white;
+}
+
+#addReelForm {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#addReelForm input {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 16px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color-light);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+    outline: none;
+}
+
+#addReelForm input::placeholder {
+    color: var(--text-muted);
+}
+
+#addReelForm input:focus {
+    border-color: var(--primary);
+    background: var(--bg-card);
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+.btn-primary {
+    padding: 12px 28px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ============================================================
+   STATUS MESSAGES
+   ============================================================ */
+.status-message {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.status-message.success {
+    display: block;
+    background: #E8F5E9;
+    color: #2E7D32;
+    border: 1px solid #A5D6A7;
+}
+
+.status-message.error {
+    display: block;
+    background: #FFEBEE;
+    color: #C62828;
+    border: 1px solid #EF9A9A;
+}
+
+.status-message.loading {
+    display: block;
+    background: #E3F2FD;
+    color: #0D47A1;
+    border: 1px solid #90CAF9;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius);
+    padding: 16px 20px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: var(--border-color);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.stat-sub {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+
+/* ============================================================
+   REELS FEED
+   ============================================================ */
+.reels-feed {
+    margin-top: 10px;
+}
+
+.reels-feed .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.reels-feed .section-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reels-feed .section-header h2 .count-badge {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color-light);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.scroll-hint {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.scroll-hint .arrow {
+    animation: slideArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes slideArrow {
+    0%, 100% { transform: translateX(0); opacity: 0.5; }
+    50% { transform: translateX(6px); opacity: 1; }
+}
+
+/* ============================================================
+   REEL CARD
+   ============================================================ */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.reel-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: fadeIn 0.4s ease both;
+}
+
+.reel-card:hover {
+    border-color: var(--border-color);
+    transform: translateY(-4px);
+    box-shadow: var(--box-shadow-hover);
+}
+
+.reel-thumbnail-wrapper {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    background: var(--bg-input);
+    overflow: hidden;
+}
+
+.reel-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.reel-card:hover .reel-thumbnail {
+    transform: scale(1.02);
+}
+
+.reel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 16px 16px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.reel-card:hover .reel-overlay {
+    opacity: 1;
+}
+
+.reel-overlay .reel-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.75rem;
+    background: var(--primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.reel-overlay .reel-link:hover {
+    background: var(--primary-dark);
+}
+
+.reel-info {
+    padding: 14px 16px 16px;
+}
+
+.reel-info h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-primary);
+}
+
+.reel-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.reel-stats {
+    display: flex;
+    gap: 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.reel-stats span {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.reel-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-color-light);
+}
+
+.btn-delete {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-delete:hover {
+    background: #FFEBEE;
+    border-color: #EF9A9A;
+    color: #C62828;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color-light);
+    border-radius: var(--border-radius-lg);
+}
+
+.empty-icon {
+    font-size: 3.5rem;
+    margin-bottom: 12px;
+}
+
+.empty-state h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.empty-state p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .dashboard-header {
+        padding: 0 16px;
+    }
+    .header-content {
+        height: 56px;
+    }
+    .logo {
+        font-size: 1.1rem;
+    }
+    .dashboard-main {
+        padding: 16px 12px 40px;
+    }
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+    .add-reel-section {
+        padding: 20px 16px;
+    }
+    #addReelForm {
+        flex-direction: column;
+    }
+    #addReelForm .btn-primary {
+        width: 100%;
+    }
+    .stats-overview {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    .stat-value {
+        font-size: 1.4rem;
+    }
+    .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .nav-tabs {
+        gap: 4px;
+    }
+    .nav-tab {
+        padding: 4px 12px;
+        font-size: 0.7rem;
+    }
+    .scroll-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        gap: 6px;
+    }
+    .stats-overview {
+        grid-template-columns: 1fr;
+    }
+    .reels-grid {
+        grid-template-columns: 1fr;
+    }
+    .reel-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .stat-card {
+        padding: 12px 16px;
+    }
+    .hero-section h1 {
+        font-size: 1.3rem;
+    }
+}
